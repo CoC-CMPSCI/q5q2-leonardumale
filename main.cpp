@@ -1,26 +1,25 @@
 #include <iostream>
 using namespace std;
 
-int main()
-{
-    int N, M;
+// checks if a number is prime
+bool isPrime(int n) {
+    if (n <= 1) return false;
+    for (int i = 2; i * i <= n; i++) {  // BUG: i <= n 
+        if (n % i == 0) return false;
+    }
+    return true;
+}
 
-    cout << "Enter your base number: ";
+int main() {
+    int N;
+    cout << "Enter a number greater than 1: ";
     cin >> N;
-    cout << "Enter your exponent: ";
-    cin >> M;
-    int power = 1;
 
-    cout << N << " to power number: ";
-    for ( int i = 0; i <= M; i++;) {
-        cout << power;
-        if (i < M) cout << ", ";
-        power *= N;
+   int next = N + 1;  // BUG: starts at N, not N+1
+    while (!isPrime(next)) {
+        next++;
     }
 
-    
-
-    cout << endl;
-
+    cout << "Next prime: " << next << endl;
     return 0;
 }
